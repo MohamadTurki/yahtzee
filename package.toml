@@ -1,0 +1,27 @@
+[[plugin.deps]]
+use = "yazi-rs/plugins:mount"
+rev = "3d25b67"
+hash = "46cbdc05596a3ecd730b288e28c7079d"
+
+[[plugin.deps]]
+use = "XYenon/yafg"
+rev = "e6ba851"
+hash = "9558dd9169cbf01eac6044583c426716"
+
+[[plugin.deps]]
+use = "boydaihungst/simple-tag"
+rev = "d019de3"
+hash = "c1c9aaf057e2347942361b7155a0308c"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:git"
+rev = "c591a36"
+hash = "5bb0bfab901d3601c370eafdd66edd31"
+
+[[plugin.deps]]
+use = "KKV9/compress"
+rev = "80e5268"
+hash = "868db729374b97871bc30b96d0e9061f"
+
+[flavor]
+deps = []

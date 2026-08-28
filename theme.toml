@@ -1,0 +1,68 @@
+[flavor]
+dark = "base16"
+light = "base16"
+
+[app]
+overall = {}
+
+[manager]
+cwd = { fg = "cyan", bold = true }
+find_keyword = { fg = "yellow", bold = true }
+find_position = { fg = "magenta", normal = true }
+marker_copied = { fg = "green", bg = "green" }
+marker_cut = { fg = "red", bg = "red" }
+marker_marked = { fg = "cyan", bg = "cyan" }
+marker_selected = { fg = "red", bg = "red" }
+border_symbol = "│"
+border_style = { fg = "darkgray" }
+
+[indicator]
+parent = { fg = "black", bg = "blue", bold = true }
+current = { fg = "black", bg = "blue", bold = true }
+preview = { fg = "black", bg = "cyan" }
+
+[tabs]
+active = { fg = "black", bg = "red", bold = true }
+inactive = { fg = "darkgray", bg = "black" }
+
+[mode]
+normal_main = { fg = "black", bg = "blue", bold = true }
+normal_alt = { fg = "blue", bg = "gray" }
+select_main = { fg = "black", bg = "green", bold = true }
+select_alt = { fg = "green", bg = "gray" }
+unset_main = { fg = "black", bg = "red", bold = true }
+unset_alt = { fg = "red", bg = "gray" }
+
+[status]
+overall = {}
+sep_left = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+progress_label = { bold = true }
+progress_normal = { fg = "green", bg = "black" }
+progress_error = { fg = "yellow", bg = "red" }
+
+[filetype]
+rules = [
+  # Directories -> Cyan / Light Cyan (color14)
+  { url = "*/", fg = "cyan" },
+  # Media / Images -> Neon Pink / Red (color1)
+  { mime = "image/*", fg = "red" },
+  { mime = "{audio,video}/*", fg = "magenta" },
+  # Documents & Archives -> Cyber Mint & Amber (color2, color3)
+  { mime = "application/pdf", fg = "yellow" },
+  { mime = "application/*zip*", fg = "green" },
+  { mime = "application/x-tar", fg = "green" },
+  { mime = "application/x-7z-compressed", fg = "green" },
+]
+
+# git.yazi — colors for the git status linemode signs
+[git]
+unknown   = { fg = "darkgray" }
+ignored   = { fg = "darkgray" }
+untracked = { fg = "magenta" }
+unstaged  = { fg = "yellow" }
+staged    = { fg = "green" }
+added     = { fg = "green" }
+deleted   = { fg = "red" }
+updated   = { fg = "yellow" }
+clean     = { fg = "reset" }

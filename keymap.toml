@@ -1,0 +1,76 @@
+#:schema https://yazi-rs.github.io/schemas/keymap.json
+
+[mgr]
+prepend_keymap = [
+
+  # trash
+  { on = [ "d" ], run = "remove", desc = "Move to trash" },
+	{ on = [ "D" ], run = "remove --permanently", desc = "Permanently delete" },
+	{ on = [ "u" ], run = "shell 'trash-restore' --block --confirm", desc = "Restore trashed files interactively" },
+	{ on = [ "g", "t" ], run = "cd ~/.local/share/Trash/files", desc = "Go to trash" },
+
+  # drag & drop
+  { on = "<C-y>", run = "shell --block -- yazi-drop",                       desc = "Drop files into current directory" },
+  { on = "D",     run = "shell -- dragon-drop -x -i -T %s",                 desc = "Drag selected files out" },
+
+  # yank between yazi instances
+  { on = "y", run = [ "shell -- echo %s | xclip -i -selection clipboard -t text/uri-list", "yank" ], desc = "Yank + copy file URI list to clipboard" },
+
+  # mount.yazi 
+  { on = "M", run = "plugin mount", desc = "Toggle mount" },
+
+  # yafg.yazi
+ { on = "<C-f>", run = "plugin yafg", desc = "Find text in files (yafg)" },
+
+  # fzf (built-in)
+  { on = [ "F" ], run = "plugin fzf", desc = "FZF search files and directories" },
+
+  # extract / compress (built-in)
+  { on = [ "c", "a", "a" ], run = "plugin --sync compress", desc = "Compress selected files" },
+  { on = [ "c", "a", "p" ], run  = "plugin compress -p", desc = "Archive selected files (password)" },
+  { on = [ "c", "a", "l" ], run  = "plugin compress -l", desc = "Archive selected files (compression level)" },
+
+  # quick navigation 
+  { on = [ "g", "w" ], run = "cd ~/Pictures/wallpapers", desc = "Go to Wallpapers" },
+  { on = [ "g", "n" ], run = "cd ~/Documents/notes",     desc = "Go to Notes" },
+  { on = [ "g", "c" ], run = "cd ~/.config",             desc = "Go to Config" },
+  { on = [ "g", "d" ], run = "cd ~/Downloads",           desc = "Go to Downloads" },
+  { on = [ "g", "p" ], run = "cd ~/Projects",            desc = "Go to Projects" },
+  { on = [ "g", "S" ], run = "cd ~/.config/suckflexibly/", desc = "Go to Suckflexibly" },
+  { on = [ "g", "C" ], run = "cd ~/.config/mozilla/firefox/hkpo5rio.default-release/chrome", desc = "Go to UserChrome.css" },
+  { on = [ "g", "y" ], run = "cd ~/.config/yazi", desc = "Go to Yazi" },
+
+  # simple-tag: toggle
+  { on = [ "t", "t", "k" ], run = "plugin simple-tag -- toggle-tag",          desc = "Toggle a tag (press any key)" },
+  { on = "`",              run = "plugin simple-tag -- toggle-tag --keys=!1q", desc = "Toggle tag(s) = ! 1 q" },
+  { on = [ "t", "t", "i" ], run = "plugin simple-tag -- toggle-tag --input",  desc = "Toggle tag(s) from input" },
+
+  # simple-tag: add 
+  { on = [ "t", "a", "k" ], run = "plugin simple-tag -- add-tag",            desc = "Add a tag (press any key)" },
+  { on = [ "t", "a", "f" ], run = "plugin simple-tag -- add-tag --keys=!1q", desc = "Add tag(s) = ! 1 q" },
+  { on = [ "t", "a", "i" ], run = "plugin simple-tag -- add-tag --input",    desc = "Add tag(s) from input" },
+
+  # simple-tag: remove
+  { on = [ "t", "d", "k" ], run = "plugin simple-tag -- remove-tag",            desc = "Remove a tag (press any key)" },
+  { on = [ "t", "d", "f" ], run = "plugin simple-tag -- remove-tag --keys=!1q", desc = "Remove tag(s) = ! 1 q" },
+  { on = [ "t", "d", "i" ], run = "plugin simple-tag -- remove-tag --input",    desc = "Remove tag(s) from input" },
+
+  # simple-tag: replace
+  { on = [ "t", "r", "k" ], run = "plugin simple-tag -- replace-tag",            desc = "Replace a tag (press any key)" },
+  { on = [ "t", "r", "f" ], run = "plugin simple-tag -- replace-tag --keys=!1q", desc = "Replace tag(s) = ! 1 q" },
+  { on = [ "t", "r", "i" ], run = "plugin simple-tag -- replace-tag --input",    desc = "Replace tag(s) from input" },
+
+  # simple-tag: edit / clear
+  { on = [ "t", "e" ], run = "plugin simple-tag -- edit-tag", desc = "Edit tags (input box)" },
+  { on = [ "t", "c" ], run = "plugin simple-tag -- clear",    desc = "Clear all tags" },
+
+  # simple-tag: select files/folders by tags
+  { on = [ "t", "s", "t" ], run = "plugin simple-tag -- toggle-select",    desc = "Toggle selection by tag" },
+  { on = [ "t", "s", "r" ], run = "plugin simple-tag -- replace-select",   desc = "Replace selection by tag" },
+  { on = [ "t", "s", "u" ], run = "plugin simple-tag -- unite-select",     desc = "Unite selection by tag" },
+  { on = [ "t", "s", "i" ], run = "plugin simple-tag -- intersect-select", desc = "Intersect selection by tag" },
+  { on = [ "t", "s", "s" ], run = "plugin simple-tag -- subtract-select",  desc = "Subtract selection by tag" },
+  { on = [ "t", "s", "e" ], run = "plugin simple-tag -- exclude-select",   desc = "Exclude selection by tag" },
+  { on = [ "t", "s", "z" ], run = "plugin simple-tag -- undo-select",      desc = "Undo/redo last selection action" },
+
+]
