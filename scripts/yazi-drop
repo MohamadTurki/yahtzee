@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+dragon-drop -t -x -T | while IFS= read -r item; do
+    item="${item#file://}"
+    [ -z "$item" ] && continue
+
+    if [[ "$item" =~ ^https?:// ]]; then
+        curl -sSOLJ "$item"
+    elif [[ -e "$item" ]]; then
+        cp -r "$item" .
+    fi
+done
+
+exit 0

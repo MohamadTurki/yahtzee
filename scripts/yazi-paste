@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+target_dir="${1:-.}"
+timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
+output_path="${target_dir}/clipboard_${timestamp}.png"
+
+# Check if clipboard contains an image
+if ! xclip -selection clipboard -t TARGETS -o | grep -q "image/png"; then
+    notify-send -u critical "Clipboard" "No image found in clipboard"
+    exit 1
+fi
+
+xclip -selection clipboard -t image/png -o > "$output_path"
+notify-send -u low "Clipboard" "Saved to $(basename "$output_path")"

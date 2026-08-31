@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+file="$1"
+
+if [[ ! -f "$file" ]]; then
+    notify-send -u low "Clipboard" "No file selected"
+    exit 1
+fi
+
+mime=$(file --mime-type -b "$file")
+
+case "$mime" in
+    image/*)
+        xclip -selection clipboard -t "$mime" -i "$file"
+        notify-send -u low "Clipboard" "Image copied: $(basename "$file")"
+        ;;
+    *)
+        notify-send -u critical "Clipboard" "Not an image: $mime"
+        exit 1
+        ;;
+esac
