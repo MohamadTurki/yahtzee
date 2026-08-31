@@ -3,6 +3,15 @@
 [mgr]
 prepend_keymap = [
 
+
+  # open terminal in current dir
+  { on   = [ "o", "t" ], run  = 'shell --orphan "$TERMINAL -e fish"', desc = "Open terminal in current directory" },
+
+  # yazi copy/paste
+  { on = [ "p", "p" ], run = "paste", desc = "Paste files" },
+  { on = [ "p", "i" ], run = 'shell yazi-paste "$PWD"', desc = "Paste image from clipboard" },
+  { on = [ "c", "i" ], run = 'shell "yazi-copy %s"', desc = "Copy image data to clipboard" },
+
   # trash
   { on = [ "d" ], run = "remove", desc = "Move to trash" },
 	{ on = [ "D" ], run = "remove --permanently", desc = "Permanently delete" },
@@ -11,7 +20,7 @@ prepend_keymap = [
 
   # drag & drop
   { on = "<C-y>", run = "shell --block -- yazi-drop",                       desc = "Drop files into current directory" },
-  { on = "D",     run = "shell -- dragon-drop -x -i -T %s",                 desc = "Drag selected files out" },
+  { on = "<C-d>",     run = "shell -- dragon-drop -x -i -T %s",                 desc = "Drag selected files out" },
 
   # yank between yazi instances
   { on = "y", run = [ "shell -- echo %s | xclip -i -selection clipboard -t text/uri-list", "yank" ], desc = "Yank + copy file URI list to clipboard" },
@@ -39,6 +48,7 @@ prepend_keymap = [
   { on = [ "g", "S" ], run = "cd ~/.config/suckflexibly/", desc = "Go to Suckflexibly" },
   { on = [ "g", "C" ], run = "cd ~/.config/mozilla/firefox/hkpo5rio.default-release/chrome", desc = "Go to UserChrome.css" },
   { on = [ "g", "y" ], run = "cd ~/.config/yazi", desc = "Go to Yazi" },
+  { on = [ "g", "l" ], run = "cd ~/.local/bin/", desc = "Go to Scripts" },
 
   # simple-tag: toggle
   { on = [ "t", "t", "k" ], run = "plugin simple-tag -- toggle-tag",          desc = "Toggle a tag (press any key)" },
